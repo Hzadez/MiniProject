@@ -1,30 +1,29 @@
-﻿using Pb503MiniProject.Models;
+﻿using System.Collections.Generic;
+using Pb503MiniProject.Models;
+using Pb503MiniProject.Services.Implementation;
+using Pb503MiniProject.Services.Interfaces;
 
 namespace Pb503MiniProject
 {
     internal class Program
     {
-        static List<Author> authors = new List<Author>();
-        static List<Book> books = new List<Book>();
-        static List<Borrower> borrowers = new List<Borrower>();
-        static List<LoanItem> loans = new List<LoanItem>();
 
         static void Main(string[] args)
         {
             while (true)
             {
-               Console.WriteLine("                                                                                                                                                                           Select an action:");
-               Console.WriteLine("                                                                                                                                                                           1 - Author actions");
-               Console.WriteLine("                                                                                                                                                                           2 - Book actions");
-               Console.WriteLine("                                                                                                                                                                           3 - Borrower actions");
-               Console.WriteLine("                                                                                                                                                                           4 - BorrowBook");
-               Console.WriteLine("                                                                                                                                                                           5 - ReturnBook");
-               Console.WriteLine("                                                                                                                                                                           6 - Most borrowed book");
-               Console.WriteLine("                                                                                                                                                                           7 - Delayed borrowers list");
-               Console.WriteLine("                                                                                                                                                                           8 - Borrowed books by borrower");
-               Console.WriteLine("                                                                                                                                                                           9 - Filter books by title");
-               Console.WriteLine("                                                                                                                                                                           10 - Filter books by author");
-               Console.WriteLine("                                                                                                                                                                           0 - Exit");
+                Console.WriteLine("                                                                                                                                                                         Select an action:");
+                Console.WriteLine("                                                                                                                                                                         1 - Author actions");
+                Console.WriteLine("                                                                                                                                                                         2 - Book actions");
+                Console.WriteLine("                                                                                                                                                                         3 - Borrower actions");
+                Console.WriteLine("                                                                                                                                                                         4 - BorrowBook");
+                Console.WriteLine("                                                                                                                                                                         5 - ReturnBook");
+                Console.WriteLine("                                                                                                                                                                         6 - Most borrowed book");
+                Console.WriteLine("                                                                                                                                                                         7 - Delayed borrowers list");
+                Console.WriteLine("                                                                                                                                                                         8 - Borrowed books by borrower");
+                Console.WriteLine("                                                                                                                                                                         9 - Filter books by title");
+                Console.WriteLine("                                                                                                                                                                         10 - Filter books by author");
+                Console.WriteLine("                                                                                                                                                                         0 - Exit");
 
                 var action = Console.ReadLine();
 
@@ -40,25 +39,25 @@ namespace Pb503MiniProject
                         BorrowerActions();
                         break;
                     case "4":
-
+                        BorrowBook();
                         break;
                     case "5":
-
+                        ReturnBook();
                         break;
                     case "6":
-
+                        MostBorrowedBook();
                         break;
                     case "7":
-
+                        DelayedBorrowersList();
                         break;
                     case "8":
-
+                        BorrowedBooksbyBorrower();
                         break;
                     case "9":
-
+                        FilterBooksbyTitle();
                         break;
                     case "10":
-
+                        FilterBooksbyAuthor();
                         break;
                     case "0":
                         return;
@@ -163,28 +162,71 @@ namespace Pb503MiniProject
             }
         }
         /////////////////////////////////////
+        static void FilterBooksbyAuthor()
+        {
+
+
+        }
+        static void FilterBooksbyTitle()
+        {
+
+
+        }
+        static void BorrowedBooksbyBorrower()
+        {
+
+
+        }
+        static void DelayedBorrowersList()
+        {
+
+
+        }
+        static void MostBorrowedBook()
+        {
+
+
+        }
+        static void ReturnBook()
+        {
+
+
+        }
+        static void BorrowBook()
+        { 
+        
+
+        }
+        /////////////////////////////////////
         static void ListAuthors()
         {
 
         }
         static void CreateAuthor()
         {
+             IauthorService _authorService = new AuthorService();
             Console.WriteLine("Enter author name:");
             var name = Console.ReadLine();
-            authors.Add(new Author { });
+            _authorService.CreateAuthor(new Author
+            {
+                Name = name
+            });
             Console.WriteLine("Author created successfully.");
 
         }
         static void EditAuthor()
         {
+            Author author = new Author();
+
+            IauthorService _authorService = new AuthorService();
             Console.WriteLine("Enter author ID to edit:");
             var id = int.Parse(Console.ReadLine());
-            var author = authors.FirstOrDefault(a => a.Id == id);
-
+            
             if (author != null)
             {
                 Console.WriteLine("Enter new author name:");
                 author.Name = Console.ReadLine();
+                _authorService.UpdateAuthor(id, author);
                 Console.WriteLine("Author updated successfully.");
             }
             else
@@ -194,13 +236,14 @@ namespace Pb503MiniProject
         }
         static void DeleteAuthor()
         {
+            IauthorService _authorService = new AuthorService();
             Console.WriteLine("Enter author ID to delete:");
             var id = int.Parse(Console.ReadLine());
-            var author = authors.FirstOrDefault(a => a.Id == id);
+            var author = _authorService.GetbyId(id);
 
             if (author != null)
             {
-                authors.Remove(author);
+                _authorService.DeleteAuthor(id);
                 Console.WriteLine("Author deleted successfully.");
             }
             else
@@ -208,27 +251,31 @@ namespace Pb503MiniProject
                 Console.WriteLine("Author not found.");
             }
         }
-        /////////////////////////////////////
+        ///////////////////////////////////
         static void ListBooks()
         {
 
         }
         static void CreateBook()
         {
-            Console.WriteLine("Enter book name:");
-            var name = Console.ReadLine();
-            books.Add(new Book { });
+            IbookService _bookService = new BookService();
+            Console.WriteLine("Enter book title:"); 
+            var Title = Console.ReadLine();
+            Console.WriteLine("Enter book description:");
+            var Description = Console.ReadLine();
+            _bookService.CreateBook(new Book{Title= Title, Description = Description});
             Console.WriteLine("Book created successfully.");
         }
         static void EditBook()
         {
+            IbookService _bookService = new BookService();
             Console.WriteLine("Enter book ID to edit:");
             var id = int.Parse(Console.ReadLine());
-            var book = books.FirstOrDefault(b => b.Id == id);
+            var book = _bookService.GetbyId(id);
 
             if (book != null)
             {
-                Console.WriteLine("Enter new book name:");
+                Console.WriteLine("Enter new book title:");
                 book.Title = Console.ReadLine();
                 Console.WriteLine("Book updated successfully.");
             }
@@ -239,13 +286,14 @@ namespace Pb503MiniProject
         }
         static void DeleteBook()
         {
+            IbookService _bookService = new BookService();
             Console.WriteLine("Enter book ID to delete:");
             var id = int.Parse(Console.ReadLine());
-            var book = books.FirstOrDefault(b => b.Id == id);
+            var book = _bookService.GetbyId(id);
 
             if (book != null)
             {
-                books.Remove(book);
+                _bookService.DeleteBook(id);
                 Console.WriteLine("Book deleted successfully.");
             }
             else
@@ -253,23 +301,25 @@ namespace Pb503MiniProject
                 Console.WriteLine("Book not found.");
             }
         }
-        /////////////////////////////////////
+        ///////////////////////////////////
         static void ListBorrower()
         {
 
         }
         static void CreateBorrower()
         {
+            IborrowerService _borrrowerService = new BorrowerService();
             Console.WriteLine("Enter Borrower name:");
             var name = Console.ReadLine();
-            borrowers.Add(new Borrower { });
+            _borrrowerService.CreateBorrower(new Borrower {Name=name});
             Console.WriteLine("Borrower created successfully.");
         }
         static void EditBorrower()
         {
+            IborrowerService _borrrowerService = new BorrowerService();
             Console.WriteLine("Enter borrower ID to edit:");
             var id = int.Parse(Console.ReadLine());
-            var borrower = borrowers.FirstOrDefault(x => x.Id == id);
+            var borrower = _borrrowerService.GetbyId(id);
 
             if (borrower != null)
             {
@@ -284,13 +334,14 @@ namespace Pb503MiniProject
         }
         static void DeleteBorrower()
         {
+            IborrowerService _borrrowerService = new BorrowerService();
             Console.WriteLine("Enter borrower ID to delete:");
             var id = int.Parse(Console.ReadLine());
-            var borrower = borrowers.FirstOrDefault(x => x.Id == id);
+            var borrower = _borrrowerService.GetbyId(id);
 
             if (borrower != null)
             {
-                borrowers.Remove(borrower);
+                _borrrowerService.DeleteBorrower(id);
                 Console.WriteLine("Borrower deleted successfully.");
             }
             else
@@ -298,7 +349,7 @@ namespace Pb503MiniProject
                 Console.WriteLine("Borrower not found.");
             }
         }
-        /////////////////////////////////////
+        ///////////////////////////////////
 
     }
 }

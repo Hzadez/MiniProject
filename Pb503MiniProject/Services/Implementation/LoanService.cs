@@ -4,50 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pb503MiniProject.Models;
+using Pb503MiniProject.Repostory.I;
+using Pb503MiniProject.Repostory.Implementation;
 using Pb503MiniProject.Services.Interfaces;
 
 namespace Pb503MiniProject.Services.Implementation
 {
     public class LoanService : IloanService
     {
+        private readonly Iloan _loan;
+        public LoanService()
+        {
+            _loan = new Mloan();
+        }
         public void Commit()
         {
-            AppDbContext dbContext = new AppDbContext();
-            dbContext.SaveChanges();
+            throw new NotImplementedException();
         }
 
         public void CreateLoan(Loan loan)
         {
-            AppDbContext dbContext = new AppDbContext();
-            dbContext.Loans.Add(loan);
-            Commit();
+            _loan.Create(loan);
+            _loan.Commit();
         }
 
         public void DeleteLoan(int id)
         {
-            AppDbContext dbContext = new AppDbContext();
-            var delete = dbContext.Loans.FirstOrDefault(x => x.Id == id);
-            dbContext.Remove(delete);
-            Commit();
+            _loan.Delete(id);
+            _loan.Commit();
         }
 
         public List<Loan> GetAll()
         {
-            AppDbContext dbContext = new AppDbContext();
-            return dbContext.Loans.ToList();
+            return _loan.GetAll();
         }
 
         public Loan GetbyId(int id)
         {
-            AppDbContext dbContext = new AppDbContext();
-            return dbContext.Loans.FirstOrDefault(x => x.Id == id);
+            return _loan.GetbyId(id);
         }
 
         public void UpdateLoan(int id, Loan loan)
         {
-            AppDbContext dbContext = new AppDbContext();
-            var Update = dbContext.Loans.FirstOrDefault(x => x.Id == id);
-            dbContext. Loans.Remove(Update);
+            var loan1 = _loan.GetbyId(id);
+            loan1.Borrowers = loan.Borrowers;
             Commit();
         }
     }

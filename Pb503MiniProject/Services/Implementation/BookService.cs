@@ -4,50 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pb503MiniProject.Models;
+using Pb503MiniProject.Repostory.I;
+using Pb503MiniProject.Repostory.Implementation;
 using Pb503MiniProject.Services.Interfaces;
 
 namespace Pb503MiniProject.Services.Implementation
 {
     public class BookService : IbookService
     {
+        private readonly Ibook _book;
+        public BookService()
+        {
+            _book = new Mbook();
+        }
         public void Commit()
         {
-            AppDbContext dbContext = new AppDbContext();
-            dbContext.SaveChanges();
+            throw new NotImplementedException();
         }
 
         public void CreateBook(Book book)
         {
-            AppDbContext dbContext = new AppDbContext();
-            dbContext.Books.Add(book);
-           Commit();
+            _book.Create(book);
+            _book.Commit();
         }
 
         public void DeleteBook(int id)
         {
-            AppDbContext dbContext = new AppDbContext();
-            var delete = dbContext.Books.FirstOrDefault(x => x.Id == id);
-            dbContext.Remove(delete);
-            Commit();
+            _book.Delete(id);
+            _book.Commit();
         }
 
         public List<Book> GetAll()
         {
-            AppDbContext dbContext = new AppDbContext();
-            return dbContext.Books.ToList();
+            return _book.GetAll();
         }
 
         public Book GetbyId(int id)
         {
-            AppDbContext dbContext = new AppDbContext();
-            return dbContext.Books.FirstOrDefault(x => x.Id == id);
+            return _book.GetbyId(id);
         }
 
         public void UpdateBook(int id, Book book)
         {
-            AppDbContext dbContext = new AppDbContext();
-            var Update = dbContext.Books.FirstOrDefault(x => x.Id == id);
-            dbContext.Books.Remove(Update);
+            var book1 = _book.GetbyId(id);
+            book1.Title = book.Title;
             Commit();
         }
     }

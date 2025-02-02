@@ -10,35 +10,37 @@ namespace Pb503MiniProject.Repostory.Implementation
 {
     public class GenericRepostory<T> : IGenericRepostory<T> where T : BaseEntity, new()
     {
+        private readonly AppDbContext _appDbContext;
+
+        public GenericRepostory()
+        {
+            _appDbContext = new AppDbContext();
+        }
+
         public void Create(T Entity)
         {
-            AppDbContext newDb = new AppDbContext();
-            newDb.Set <T>().Add(Entity);
-            newDb.SaveChanges();
+            _appDbContext.Set <T>().Add(Entity);
+            _appDbContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            AppDbContext newDb = new AppDbContext();
-            var model = newDb.Set<T>().FirstOrDefault(x => x.Id == id);
-            newDb.Set<T>().Remove(model);
-            newDb.SaveChanges();
+            var model = _appDbContext.Set<T>().FirstOrDefault(x => x.Id == id);
+            _appDbContext.Set<T>().Remove(model);
+            _appDbContext.SaveChanges();
         }
 
         public T GetbyId(int id)
         {
-            AppDbContext newDb = new AppDbContext();
-            return newDb.Set<T>().FirstOrDefault(x => x.Id == id);
+            return _appDbContext.Set<T>().FirstOrDefault(x => x.Id == id);
         }
         public List<T> GetAll()
         {
-            AppDbContext newdb = new AppDbContext();
-            return newdb.Set<T>().ToList();
+            return _appDbContext.Set<T>().ToList();
         }
         public void Commit()
         {
-            AppDbContext newDb = new AppDbContext();
-            newDb.SaveChanges();
+            _appDbContext.SaveChanges();
         }
     }
 }
