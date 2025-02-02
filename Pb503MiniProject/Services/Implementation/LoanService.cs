@@ -19,7 +19,7 @@ namespace Pb503MiniProject.Services.Implementation
         }
         public void Commit()
         {
-            throw new NotImplementedException();
+            _loan.Commit();
         }
 
         public void CreateLoan(Loan loan)

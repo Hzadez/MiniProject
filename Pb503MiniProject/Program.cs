@@ -200,7 +200,11 @@ namespace Pb503MiniProject
         /////////////////////////////////////
         static void ListAuthors()
         {
-
+            IauthorService _authorService = new AuthorService();
+            foreach (var author in _authorService.GetAll())
+            {
+                Console.WriteLine($"Id : {author.Id} -- Name : {author.Name}");
+            }
         }
         static void CreateAuthor()
         {
@@ -217,7 +221,6 @@ namespace Pb503MiniProject
         static void EditAuthor()
         {
             Author author = new Author();
-
             IauthorService _authorService = new AuthorService();
             Console.WriteLine("Enter author ID to edit:");
             var id = int.Parse(Console.ReadLine());
@@ -226,7 +229,7 @@ namespace Pb503MiniProject
             {
                 Console.WriteLine("Enter new author name:");
                 author.Name = Console.ReadLine();
-                _authorService.UpdateAuthor(id, author);
+               _authorService.UpdateAuthor(id, author);
                 Console.WriteLine("Author updated successfully.");
             }
             else
@@ -254,7 +257,11 @@ namespace Pb503MiniProject
         ///////////////////////////////////
         static void ListBooks()
         {
-
+            IbookService _bookService = new BookService();
+            foreach (var book in _bookService.GetAll())
+            {
+                Console.WriteLine($"Id : {book.Id} -- Title : {book.Title} -- Description : {book.Description}");
+            }
         }
         static void CreateBook()
         {
@@ -268,15 +275,19 @@ namespace Pb503MiniProject
         }
         static void EditBook()
         {
+            Book book = new Book();
             IbookService _bookService = new BookService();
             Console.WriteLine("Enter book ID to edit:");
             var id = int.Parse(Console.ReadLine());
-            var book = _bookService.GetbyId(id);
+           
 
             if (book != null)
             {
                 Console.WriteLine("Enter new book title:");
                 book.Title = Console.ReadLine();
+                Console.WriteLine("Enter book description:");
+                book.Description = Console.ReadLine();
+                _bookService.UpdateBook(id,book);
                 Console.WriteLine("Book updated successfully.");
             }
             else
@@ -304,27 +315,37 @@ namespace Pb503MiniProject
         ///////////////////////////////////
         static void ListBorrower()
         {
-
+            IborrowerService _borrrowerService = new BorrowerService();
+            foreach (var borrower in _borrrowerService.GetAll())
+            {
+                Console.WriteLine($"Id : {borrower.Id} -- Name : {borrower.Name} -- Email : {borrower.Email}");
+            }
         }
         static void CreateBorrower()
         {
             IborrowerService _borrrowerService = new BorrowerService();
             Console.WriteLine("Enter Borrower name:");
             var name = Console.ReadLine();
-            _borrrowerService.CreateBorrower(new Borrower {Name=name});
+            Console.WriteLine("Enter Borrower email:");
+            var email = Console.ReadLine();
+            _borrrowerService.CreateBorrower(new Borrower {Name=name,Email=email});
             Console.WriteLine("Borrower created successfully.");
         }
         static void EditBorrower()
         {
+            Borrower borrower = new Borrower();
             IborrowerService _borrrowerService = new BorrowerService();
             Console.WriteLine("Enter borrower ID to edit:");
             var id = int.Parse(Console.ReadLine());
-            var borrower = _borrrowerService.GetbyId(id);
+            
 
             if (borrower != null)
             {
                 Console.WriteLine("Enter new borrower name:");
                 borrower.Name = Console.ReadLine();
+                Console.WriteLine("Enter book Email:");
+                borrower.Email = Console.ReadLine();
+                _borrrowerService.UpdateBorrower(id, borrower);
                 Console.WriteLine("Borrower updated successfully.");
             }
             else

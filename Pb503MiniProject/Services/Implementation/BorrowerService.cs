@@ -19,7 +19,7 @@ namespace Pb503MiniProject.Services.Implementation
         }
         public void Commit()
         {
-            throw new NotImplementedException();
+            _borrower.Commit();
         }
 
         public void CreateBorrower(Borrower borrower)
@@ -48,6 +48,7 @@ namespace Pb503MiniProject.Services.Implementation
         {
             var borrower1 = _borrower.GetbyId(id);
             borrower1.Name = borrower.Name;
+            borrower1.Email = borrower.Email;
             Commit();
         }
     }

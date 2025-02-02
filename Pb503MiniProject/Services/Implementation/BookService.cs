@@ -19,7 +19,7 @@ namespace Pb503MiniProject.Services.Implementation
         }
         public void Commit()
         {
-            throw new NotImplementedException();
+            _book.Commit();
         }
 
         public void CreateBook(Book book)
@@ -48,6 +48,7 @@ namespace Pb503MiniProject.Services.Implementation
         {
             var book1 = _book.GetbyId(id);
             book1.Title = book.Title;
+            book1.Description = book.Description;
             Commit();
         }
     }
