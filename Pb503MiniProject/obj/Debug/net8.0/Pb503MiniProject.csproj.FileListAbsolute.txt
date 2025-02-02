@@ -129,3 +129,4 @@ C:\Users\user\Desktop\Backend\Pb503MiniProject\Pb503MiniProject\bin\Debug\net8.0
 C:\Users\user\Desktop\Backend\Pb503MiniProject\Pb503MiniProject\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\user\Desktop\Backend\Pb503MiniProject\Pb503MiniProject\obj\Debug\net8.0\Pb503MiniProject.csproj.AssemblyReference.cache
 C:\Users\user\Desktop\Backend\Pb503MiniProject\Pb503MiniProject\obj\Debug\net8.0\Pb503Min.7C59EE76.Up2Date
+C:\Users\user\Desktop\Backend\Pb503MiniProject\Pb503MiniProject\obj\Debug\net8.0\Pb503MiniProject.sourcelink.json

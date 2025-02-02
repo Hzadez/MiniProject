@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|solutionrelative:pb503miniproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|c:\\users\\user\\desktop\\backend\\pb503miniproject\\pb503miniproject\\services\\implementation\\loanitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|solutionrelative:pb503miniproject\\services\\implementation\\loanitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|c:\\users\\user\\desktop\\backend\\pb503miniproject\\pb503miniproject\\services\\implementation\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|solutionrelative:pb503miniproject\\services\\implementation\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|c:\\users\\user\\desktop\\backend\\pb503miniproject\\pb503miniproject\\services\\implementation\\loanitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|solutionrelative:pb503miniproject\\services\\implementation\\loanitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|c:\\users\\user\\desktop\\backend\\pb503miniproject\\pb503miniproject\\services\\implementation\\borrowerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|c:\\users\\user\\desktop\\backend\\pb503miniproject\\pb503miniproject\\services\\implementation\\loanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|solutionrelative:pb503miniproject\\services\\implementation\\loanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|c:\\users\\user\\desktop\\backend\\pb503miniproject\\pb503miniproject\\services\\implementation\\authorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|solutionrelative:pb503miniproject\\services\\implementation\\authorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11D5343E-1277-4299-9BAA-D71FED26BEFB}|Pb503MiniProject\\Pb503MiniProject.csproj|c:\\users\\user\\desktop\\backend\\pb503miniproject\\pb503miniproject\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +38,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Backend\\Pb503MiniProject\\Pb503MiniProject\\Models\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Pb503MiniProject\\Models\\AppDbContext.cs",
@@ -51,8 +47,7 @@
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-01T12:55:18.253Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -60,37 +55,24 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Backend\\Pb503MiniProject\\Pb503MiniProject\\Program.cs",
               "RelativeDocumentMoniker": "Pb503MiniProject\\Program.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\Backend\\Pb503MiniProject\\Pb503MiniProject\\Program.cs*",
-              "RelativeToolTip": "Pb503MiniProject\\Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG0AAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Backend\\Pb503MiniProject\\Pb503MiniProject\\Program.cs",
+              "RelativeToolTip": "Pb503MiniProject\\Program.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAiwBoAAACnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-01T12:14:36.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "BookService.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Backend\\Pb503MiniProject\\Pb503MiniProject\\Services\\Implementation\\BookService.cs",
               "RelativeDocumentMoniker": "Pb503MiniProject\\Services\\Implementation\\BookService.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\Backend\\Pb503MiniProject\\Pb503MiniProject\\Services\\Implementation\\BookService.cs",
               "RelativeToolTip": "Pb503MiniProject\\Services\\Implementation\\BookService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAABJAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAwwBwAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-01T14:10:30.69Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthorService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Backend\\Pb503MiniProject\\Pb503MiniProject\\Services\\Implementation\\AuthorService.cs",
-              "RelativeDocumentMoniker": "Pb503MiniProject\\Services\\Implementation\\AuthorService.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\Backend\\Pb503MiniProject\\Pb503MiniProject\\Services\\Implementation\\AuthorService.cs",
-              "RelativeToolTip": "Pb503MiniProject\\Services\\Implementation\\AuthorService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T14:11:54.45Z",
               "EditorCaption": ""
             },
             {
@@ -103,8 +85,7 @@
               "RelativeToolTip": "Pb503MiniProject\\Services\\Implementation\\LoanService.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAgwBAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T14:13:05.455Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-01T14:13:05.455Z"
             },
             {
               "$type": "Document",
@@ -116,12 +97,11 @@
               "RelativeToolTip": "Pb503MiniProject\\Services\\Implementation\\BorrowerService.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAC8AAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T14:13:35.314Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-01T14:13:35.314Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "LoanItemService.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\Backend\\Pb503MiniProject\\Pb503MiniProject\\Services\\Implementation\\LoanItemService.cs",
               "RelativeDocumentMoniker": "Pb503MiniProject\\Services\\Implementation\\LoanItemService.cs",
@@ -129,8 +109,7 @@
               "RelativeToolTip": "Pb503MiniProject\\Services\\Implementation\\LoanItemService.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAwwDIAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-01T14:14:07.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-01T14:14:07.709Z"
             }
           ]
         }
