@@ -193,8 +193,15 @@ namespace Pb503MiniProject
 
         }
         static void BorrowBook()
-        { 
-        
+        {
+            Console.WriteLine("Select a book to borrow:");
+            IbookService _bookService = new BookService();
+            var availableBooks = _bookService.GetAll();
+            foreach (var book in availableBooks)
+            {
+                Console.WriteLine($"{book.Id} - {book.Title} - {book.Description}");
+            }
+
 
         }
         /////////////////////////////////////

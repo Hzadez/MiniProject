@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pb503MiniProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d44435cf57bddf316da9eb1751735441dc0cfb14")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+364ba0c2255365142bc9e32b5bff8033cb023c06")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pb503MiniProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pb503MiniProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

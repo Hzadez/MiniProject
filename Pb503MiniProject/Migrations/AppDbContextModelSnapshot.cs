@@ -34,7 +34,7 @@ namespace Pb503MiniProject.Migrations
 
                     b.HasIndex("BooksId");
 
-                    b.ToTable("AuthorBook");
+                    b.ToTable("AuthorBook", (string)null);
                 });
 
             modelBuilder.Entity("Pb503MiniProject.Models.Author", b =>
@@ -54,7 +54,7 @@ namespace Pb503MiniProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("Pb503MiniProject.Models.Book", b =>
@@ -81,7 +81,7 @@ namespace Pb503MiniProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("Pb503MiniProject.Models.Borrower", b =>
@@ -102,7 +102,7 @@ namespace Pb503MiniProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Borrowers");
+                    b.ToTable("Borrowers", (string)null);
                 });
 
             modelBuilder.Entity("Pb503MiniProject.Models.Loan", b =>
@@ -129,7 +129,7 @@ namespace Pb503MiniProject.Migrations
 
                     b.HasIndex("BorrowerId");
 
-                    b.ToTable("Loans");
+                    b.ToTable("Loans", (string)null);
                 });
 
             modelBuilder.Entity("Pb503MiniProject.Models.LoanItem", b =>
@@ -152,7 +152,7 @@ namespace Pb503MiniProject.Migrations
 
                     b.HasIndex("LoanId");
 
-                    b.ToTable("LoanItems");
+                    b.ToTable("LoanItems", (string)null);
                 });
 
             modelBuilder.Entity("AuthorBook", b =>
