@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Pb503MiniProject.Models;
+using Pb503MiniProject.Repostory.Implementation;
 using Pb503MiniProject.Services.Implementation;
 using Pb503MiniProject.Services.Interfaces;
 
@@ -39,7 +40,7 @@ namespace Pb503MiniProject
                         BorrowerActions();
                         break;
                     case "4":
-                        BorrowBook();
+                      //BorrowBook();
                         break;
                     case "5":
                         ReturnBook();
@@ -54,10 +55,14 @@ namespace Pb503MiniProject
                         BorrowedBooksbyBorrower();
                         break;
                     case "9":
-                        FilterBooksbyTitle();
-                        break;
+                        Console.Write("Enter book title: ");
+                        string title = Console.ReadLine();
+                        FilterBooksbyTitle(title);      
+                    break;
                     case "10":
-                        FilterBooksbyAuthor();
+                        Console.Write("Enter author name: ");
+                        var authorId = int.Parse(Console.ReadLine());
+                        //FilterBooksByAuthor(authorId);
                         break;
                     case "0":
                         return;
@@ -162,16 +167,24 @@ namespace Pb503MiniProject
             }
         }
         /////////////////////////////////////
-        static void FilterBooksbyAuthor()
+        static void PrintBooks()
         {
-
-
+            List<Book> books = new List<Book>();
+            if (books.Count == 0)
+            {
+                Console.WriteLine("No books found.");
+                return;
+            }
+            Console.WriteLine("\nFiltered Books:");
+            foreach (var book in books)
+            {
+                Console.WriteLine($"- {book.Title} (Published: {book.PublishedYear})");
+            }
         }
-        static void FilterBooksbyTitle()
-        {
-
-
-        }
+        static List<Book> FilterBooksbyTitle(string title) { IbookService bookService = new BookService();
+         return bookService.FilterBooksbyTitle(title); }
+        //static List<Book> FilterBooksByAuthor(int id) { IbookService bookService = new BookService(); 
+        //return bookService.GetAll().Where(b => b.Authors.Any(a => a.Id.ToList())); }
         static void BorrowedBooksbyBorrower()
         {
 
@@ -192,17 +205,71 @@ namespace Pb503MiniProject
 
 
         }
-        static void BorrowBook()
+        static void BorrowBook(IloanService loanService, IbookService bookService, IborrowerService borrowerService)
         {
-            Console.WriteLine("Select a book to borrow:");
-            IbookService _bookService = new BookService();
-            var availableBooks = _bookService.GetAll();
-            foreach (var book in availableBooks)
+                List<LoanItem> selectedBooks = new List<LoanItem>();
+                Borrower selectedBorrower = null;
+
+            while (true)
             {
-                Console.WriteLine($"{book.Id} - {book.Title} - {book.Description}");
+                Console.Clear();
+                Console.WriteLine("Available books:");
+                var books = bookService.GetAll();
+                var unavailableBookIds = loanService.GetAll().Where(x => x.ReturnDate == null).SelectMany(x => x.LoanItems.Select(li => li.BookId)).ToHashSet();
+                foreach (var book in books)
+                {
+                    string status = unavailableBookIds.Contains(book.Id) ? "Not Available" : "Available";
+                    Console.WriteLine($"[{book.Id}] {book.Title} - {status}");
+                }
+
+                Console.Write("\nEnter Book ID to borrow (or 0 to continue): ");
+                if (!int.TryParse(Console.ReadLine(), out int bookId) || bookId == 0)
+                    break;
+
+                if (unavailableBookIds.Contains(bookId))
+                {
+                    Console.WriteLine("This book is not available.");
+                    continue;
+                }
+
+                var selectedBook = books.FirstOrDefault(b => b.Id == bookId);
+                if (selectedBook != null)
+                {
+                    selectedBooks.Add(new LoanItem { BookId = selectedBook.Id });
+                    Console.WriteLine($"Added: {selectedBook.Title}");
+                }
             }
 
+            if (!selectedBooks.Any())
+            {
+                Console.WriteLine("No books selected. Operation canceled.");
+                return;
+            }
 
+            while (selectedBorrower == null)
+            {
+                Console.Clear();
+                Console.WriteLine("Select a Borrower:");
+
+                var borrowers = borrowerService.GetAll();
+                foreach (var borrower in borrowers)
+                {
+                    Console.WriteLine($"[{borrower.Id}] {borrower.Name}");
+                }
+
+                Console.Write("\nEnter Borrower ID: ");
+                if (int.TryParse(Console.ReadLine(), out int borrowerId))
+                {
+                    selectedBorrower = borrowers.FirstOrDefault(b => b.Id == borrowerId);
+                }
+            }
+
+            Console.WriteLine("\nConfirm loan? (Y/N)");
+            if (Console.ReadLine()?.Trim().ToLower() != "y")
+            {
+                Console.WriteLine("Loan canceled.");
+                return;
+            }
         }
         /////////////////////////////////////
         static void ListAuthors()
@@ -378,7 +445,6 @@ namespace Pb503MiniProject
             }
         }
         ///////////////////////////////////
-
     }
 }
 

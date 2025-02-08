@@ -15,5 +15,6 @@ namespace Pb503MiniProject.Services.Interfaces
         Book GetbyId(int id);
         List<Book> GetAll();
         void Commit();
+        List<Book> FilterBooksbyTitle(string title);
     }
 }

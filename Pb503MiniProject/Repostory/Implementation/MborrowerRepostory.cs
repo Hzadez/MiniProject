@@ -8,7 +8,7 @@ using Pb503MiniProject.Repostory.I;
 
 namespace Pb503MiniProject.Repostory.Implementation
 {
-    public class Mloan : GenericRepostory<Loan>, Iloan
+    public class MborrowerRepostory : GenericRepostory<Borrower>, Iborrower
     {
     }
 }

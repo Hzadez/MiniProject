@@ -15,7 +15,7 @@ namespace Pb503MiniProject.Services.Implementation
         private readonly Iborrower _borrower;
         public BorrowerService()
         {
-            _borrower = new Mborrower();
+            _borrower = new MborrowerRepostory();
         }
         public void Commit()
         {

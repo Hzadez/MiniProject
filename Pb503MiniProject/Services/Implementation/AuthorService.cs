@@ -16,7 +16,7 @@ namespace Pb503MiniProject.Services.Implementation
 
         public AuthorService()
         {
-            _author = new Mauthor();
+            _author = new MAuthorRepostory();
         }
 
         public void Commit()

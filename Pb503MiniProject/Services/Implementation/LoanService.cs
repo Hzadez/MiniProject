@@ -15,7 +15,7 @@ namespace Pb503MiniProject.Services.Implementation
         private readonly Iloan _loan;
         public LoanService()
         {
-            _loan = new Mloan();
+            _loan = new MloanRepostory();
         }
         public void Commit()
         {

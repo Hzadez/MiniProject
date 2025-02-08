@@ -15,7 +15,7 @@ namespace Pb503MiniProject.Services.Implementation
         private readonly Iloanitem _loanitem;
         public LoanItemService()
         {
-            _loanitem = new Mloanitem();
+            _loanitem = new MLoanitemRepostory();
         }
 
         public void Commit()

@@ -15,7 +15,7 @@ namespace Pb503MiniProject.Services.Implementation
         private readonly Ibook _book;
         public BookService()
         {
-            _book = new Mbook();
+            _book = new MBookRepostory();
         }
         public void Commit()
         {
@@ -36,7 +36,15 @@ namespace Pb503MiniProject.Services.Implementation
 
         public List<Book> GetAll()
         {
-            return _book.GetAll();
+            Ibook bookRepository = new MBookRepostory();
+
+            if (bookRepository.GetAll() is null)
+            {
+                throw new Exception("Book is not found");
+            }
+
+
+            return bookRepository.GetAll();
         }
 
         public Book GetbyId(int id)
@@ -50,6 +58,18 @@ namespace Pb503MiniProject.Services.Implementation
             book1.Title = book.Title;
             book1.Description = book.Description;
             Commit();
+        }
+        public List<Book> FilterBooksbyTitle(string title)
+        {
+            List<Book> books = new List<Book>();
+            foreach (Book book in _book.GetAll()) 
+            {
+            if (book.Title.ToLower().Contains(book.Title.ToLower()))
+                {
+                    books.Add(book);
+                }
+            }
+            return books;
         }
     }
 }
