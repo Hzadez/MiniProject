@@ -40,7 +40,7 @@ namespace Pb503MiniProject
                         BorrowerActions();
                         break;
                     case "4":
-                      //BorrowBook();
+                        BorrowBook();
                         break;
                     case "5":
                         ReturnBook();
@@ -57,12 +57,23 @@ namespace Pb503MiniProject
                     case "9":
                         Console.Write("Enter book title: ");
                         string title = Console.ReadLine();
-                        FilterBooksbyTitle(title);      
-                    break;
+                        BookService bookService = new BookService();
+                        var datas = bookService.FilterBooksbyTitle(title);
+                        foreach (var abc in datas)
+                        {
+                            Console.WriteLine($" Id : {abc.Id} +  ,  + Title : {abc.Title}");
+                        }
+                        break;
                     case "10":
-                        Console.Write("Enter author name: ");
-                        var authorId = int.Parse(Console.ReadLine());
-                        //FilterBooksByAuthor(authorId);
+                        Console.Write("Enter author : ");
+                        string author = Console.ReadLine();
+                        MBookRepostory bookRepostory = new MBookRepostory();
+                        var data = bookRepostory._appDbContext.Books.Where(b=>b.Authors.Where(a=>a.Name.ToLower().Contains(author)).Count() > 0);
+                        foreach (var book1 in data)
+                        {
+                            Console.WriteLine($" Id : {book1.Id} +  ,  + Title : {book1.Title}");
+                        }
+                        Console.ReadKey();
                         break;
                     case "0":
                         return;
@@ -167,28 +178,8 @@ namespace Pb503MiniProject
             }
         }
         /////////////////////////////////////
-        static void PrintBooks()
-        {
-            List<Book> books = new List<Book>();
-            if (books.Count == 0)
-            {
-                Console.WriteLine("No books found.");
-                return;
-            }
-            Console.WriteLine("\nFiltered Books:");
-            foreach (var book in books)
-            {
-                Console.WriteLine($"- {book.Title} (Published: {book.PublishedYear})");
-            }
-        }
-        static List<Book> FilterBooksbyTitle(string title) { IbookService bookService = new BookService();
-         return bookService.FilterBooksbyTitle(title); }
-        //static List<Book> FilterBooksByAuthor(int id) { IbookService bookService = new BookService(); 
-        //return bookService.GetAll().Where(b => b.Authors.Any(a => a.Id.ToList())); }
         static void BorrowedBooksbyBorrower()
         {
-
-
         }
         static void DelayedBorrowersList()
         {
@@ -205,10 +196,13 @@ namespace Pb503MiniProject
 
 
         }
-        static void BorrowBook(IloanService loanService, IbookService bookService, IborrowerService borrowerService)
+        static void BorrowBook()
         {
-                List<LoanItem> selectedBooks = new List<LoanItem>();
-                Borrower selectedBorrower = null;
+            IloanService loanService = new LoanService();
+            IbookService bookService = new BookService();
+            IborrowerService borrowerService = new BorrowerService();
+            List<LoanItem> selectedBooks = new List<LoanItem>();
+            Borrower selectedBorrower = null;
 
             while (true)
             {
@@ -264,8 +258,8 @@ namespace Pb503MiniProject
                 }
             }
 
-            Console.WriteLine("\nConfirm loan? (Y/N)");
-            if (Console.ReadLine()?.Trim().ToLower() != "y")
+            Console.WriteLine("\nConfirm loan? (Yes or No)");
+            if (Console.ReadLine()?.Trim().ToLower() != "yes")
             {
                 Console.WriteLine("Loan canceled.");
                 return;
@@ -282,7 +276,7 @@ namespace Pb503MiniProject
         }
         static void CreateAuthor()
         {
-             IauthorService _authorService = new AuthorService();
+            IauthorService _authorService = new AuthorService();
             Console.WriteLine("Enter author name:");
             var name = Console.ReadLine();
             _authorService.CreateAuthor(new Author
@@ -298,12 +292,12 @@ namespace Pb503MiniProject
             IauthorService _authorService = new AuthorService();
             Console.WriteLine("Enter author ID to edit:");
             var id = int.Parse(Console.ReadLine());
-            
+
             if (author != null)
             {
                 Console.WriteLine("Enter new author name:");
                 author.Name = Console.ReadLine();
-               _authorService.UpdateAuthor(id, author);
+                _authorService.UpdateAuthor(id, author);
                 Console.WriteLine("Author updated successfully.");
             }
             else
@@ -340,11 +334,11 @@ namespace Pb503MiniProject
         static void CreateBook()
         {
             IbookService _bookService = new BookService();
-            Console.WriteLine("Enter book title:"); 
+            Console.WriteLine("Enter book title:");
             var Title = Console.ReadLine();
             Console.WriteLine("Enter book description:");
             var Description = Console.ReadLine();
-            _bookService.CreateBook(new Book{Title= Title, Description = Description});
+            _bookService.CreateBook(new Book { Title = Title, Description = Description });
             Console.WriteLine("Book created successfully.");
         }
         static void EditBook()
@@ -353,7 +347,7 @@ namespace Pb503MiniProject
             IbookService _bookService = new BookService();
             Console.WriteLine("Enter book ID to edit:");
             var id = int.Parse(Console.ReadLine());
-           
+
 
             if (book != null)
             {
@@ -361,7 +355,7 @@ namespace Pb503MiniProject
                 book.Title = Console.ReadLine();
                 Console.WriteLine("Enter book description:");
                 book.Description = Console.ReadLine();
-                _bookService.UpdateBook(id,book);
+                _bookService.UpdateBook(id, book);
                 Console.WriteLine("Book updated successfully.");
             }
             else
@@ -402,7 +396,7 @@ namespace Pb503MiniProject
             var name = Console.ReadLine();
             Console.WriteLine("Enter Borrower email:");
             var email = Console.ReadLine();
-            _borrrowerService.CreateBorrower(new Borrower {Name=name,Email=email});
+            _borrrowerService.CreateBorrower(new Borrower { Name = name, Email = email });
             Console.WriteLine("Borrower created successfully.");
         }
         static void EditBorrower()
@@ -411,7 +405,7 @@ namespace Pb503MiniProject
             IborrowerService _borrrowerService = new BorrowerService();
             Console.WriteLine("Enter borrower ID to edit:");
             var id = int.Parse(Console.ReadLine());
-            
+
 
             if (borrower != null)
             {

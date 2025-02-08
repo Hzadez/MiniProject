@@ -10,7 +10,7 @@ namespace Pb503MiniProject.Repostory.Implementation
 {
     public class GenericRepostory<T> : IGenericRepostory<T> where T : BaseEntity, new()
     {
-        private readonly AppDbContext _appDbContext;
+        public readonly AppDbContext _appDbContext;
 
         public GenericRepostory()
         {

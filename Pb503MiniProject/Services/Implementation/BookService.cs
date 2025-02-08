@@ -61,10 +61,11 @@ namespace Pb503MiniProject.Services.Implementation
         }
         public List<Book> FilterBooksbyTitle(string title)
         {
+            MBookRepostory bookRepostory = new MBookRepostory();
             List<Book> books = new List<Book>();
-            foreach (Book book in _book.GetAll()) 
+            foreach (Book book in bookRepostory.GetAll()) 
             {
-            if (book.Title.ToLower().Contains(book.Title.ToLower()))
+            if (book.Title.ToLower().Contains(book.Title.Trim().ToLower()))
                 {
                     books.Add(book);
                 }

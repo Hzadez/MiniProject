@@ -11,20 +11,16 @@ namespace Pb503MiniProject.Repostory.Implementation
 {
     public class MBookRepostory : GenericRepostory<Book>, Ibook
     {
-        private readonly AppDbContext _context;
-        public MBookRepostory()
-        {
-            _context = new AppDbContext();
-        }
+       
 
         public List<Book> GetAllByInclude()
         {
-            return _context.Books.Include(x => x.Authors).ToList();
+            return _appDbContext.Books.Include(x => x.Authors).ToList();
         }
 
         public Book? GetByIdInclude(int id)
         {
-            var data = _context.Books.Include(x => x.Authors).FirstOrDefault(x => x.Id == id);
+            var data = _appDbContext.Books.Include(x => x.Authors).FirstOrDefault(x => x.Id == id);
             return data;
         }
     }
